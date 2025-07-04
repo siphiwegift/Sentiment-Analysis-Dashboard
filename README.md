@@ -9,6 +9,7 @@ This is a simple yet powerful Sentiment Analysis App built with Streamlit and Ke
 ✅ Export results: CSV, JSON, PDF report
 ✅ Easy to use with direct text entry or file upload
 
+
 ⚙️ Tech Stack
 Python 3.11
 Streamlit
@@ -20,9 +21,11 @@ WordCloud
 📥 Installation
 1️⃣ Clone this repository:
 
+
 git clone https://github.com/your-username/sentiment-analysis-dashboard.git
 cd sentiment-analysis-dashboard
 2️⃣ Create virtual environment (recommended):
+
 
 python -m venv venv
 # Activate:
@@ -32,6 +35,7 @@ venv\Scripts\activate
 source venv/bin/activate
 3️⃣ Install dependencies:
 
+
 pip install -r requirements.txt
 🏃 Run the app
 streamlit run PythonApp.py
@@ -39,6 +43,7 @@ streamlit run PythonApp.py
 1️⃣ Select Input Mode in the sidebar
 2️⃣ Click Analyze to see sentiment, keywords, charts, and word cloud
 3️⃣ Download your results in CSV, JSON, PDF formats
+
 
 🔍 API Selection Justification
 KeyBERT for local keyword extraction (no API key needed).
