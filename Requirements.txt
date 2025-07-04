@@ -1,0 +1,10 @@
+streamlit
+transformers
+torch
+keybert
+scikit-learn
+sentence-transformers
+fpdf2
+matplotlib
+pandas
+numpy
