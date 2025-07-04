@@ -1,52 +1,80 @@
-📊 Sentiment Analysis Dashboard
-This is a simple yet powerful Sentiment Analysis App built with Streamlit and KeyBERT. It classifies text feedback as Positive, Negative, or Neutral, extracts keywords, shows a word cloud, and lets you export results as CSV, JSON, and PDF.
+✅ Step-by-Step Plan for Your Sentiment Analysis Dashboard
+🔹 Step 1: Set Up Your Environment
+Before coding anything, let's prepare your computer.
 
-🚀 Features
-✅ Rule-based sentiment detection using positive/negative keywords
-✅ Confidence scoring for sentiment classification
-✅ Automatic keyword extraction using KeyBERT
-✅ Visualizations: Sentiment distribution bar chart, word cloud
-✅ Export results: CSV, JSON, PDF report
-✅ Easy to use with direct text entry or file upload
+1. Install Python
+Make sure Python 3.8+ is installed.
 
+To check:
 
-⚙️ Tech Stack
-Python 3.11
-Streamlit
-KeyBERT
-Sentence-Transformers
-FPDF
-Matplotlib
-WordCloud
-📥 Installation
-1️⃣ Clone this repository:
+bash
+Copy
+Edit
+python --version
+If it's not installed, download it from: https://www.python.org/downloads
 
+2. Install Required Tools
+Open your terminal or command prompt and create a new project folder:
 
-git clone https://github.com/your-username/sentiment-analysis-dashboard.git
-cd sentiment-analysis-dashboard
-2️⃣ Create virtual environment (recommended):
+bash
+Copy
+Edit
+mkdir sentiment_dashboard
+cd sentiment_dashboard
+Then create a virtual environment:
 
-
+bash
+Copy
+Edit
 python -m venv venv
-# Activate:
-# Windows
-venv\Scripts\activate
-# macOS/Linux
-source venv/bin/activate
-3️⃣ Install dependencies:
+Activate it:
 
+Windows: venv\Scripts\activate
 
-pip install -r requirements.txt
-🏃 Run the app
-streamlit run PythonApp.py
-✏️ How to use
-1️⃣ Select Input Mode in the sidebar
-2️⃣ Click Analyze to see sentiment, keywords, charts, and word cloud
-3️⃣ Download your results in CSV, JSON, PDF formats
+macOS/Linux: source venv/bin/activate
 
+3. Install Required Python Libraries
+Install these tools:
 
-🔍 API Selection Justification
-KeyBERT for local keyword extraction (no API key needed).
-Simple keyword-based sentiment rules for clarity.
-✅ License
-MIT License
+bash
+Copy
+Edit
+pip install streamlit transformers torch pandas matplotlib seaborn wordcloud
+🔹 Step 2: Build a Simple Sentiment App (1 Input Box)
+Let’s get your first working version! Create a file named app.py and copy this code:
+
+python
+Copy
+Edit
+import streamlit as st
+from transformers import pipeline
+
+# Load sentiment analysis model
+sentiment_pipeline = pipeline("sentiment-analysis")
+
+st.title("🧠 Sentiment Analysis Dashboard")
+
+# User input
+user_input = st.text_area("Enter some text to analyze sentiment:")
+
+# Analyze
+if st.button("Analyze Sentiment"):
+    if user_input.strip() == "":
+        st.warning("Please enter some text.")
+    else:
+        with st.spinner("Analyzing..."):
+            result = sentiment_pipeline(user_input)[0]
+            st.success("Analysis complete!")
+            st.write(f"**Label**: {result['label']}")
+            st.write(f"**Confidence Score**: {round(result['score']*100, 2)}%")
+4. Run the App:
+In the terminal:
+
+bash
+Copy
+Edit
+streamlit run app.py
+✅ You now have a working sentiment analysis dashboard!
+
+🔹 Step 3: Add File Upload & Batch Processing (CSV)
+We’ll allow users to upload a CSV with a column of texts and analyze them in batches.
